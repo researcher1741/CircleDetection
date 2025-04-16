@@ -1,0 +1,40 @@
+{
+  "input_shape": [1, 100, 100],
+  "channels": [1, 128, 512, 64],
+  "kernels": [5, 3, 3],
+  "pools": [2, 2, 2],
+  "strides": null,
+  "FFN_dims": [1024, 128, 3],
+"circle": {
+  "img_size": 100,
+  "min_radius": 10,
+  "max_radius": 30,
+  "noise_level": 0.2
+},
+"data_config": {
+  "num_train": 5000,
+  "num_val": 1000,
+  "num_test": 1000,
+  "num_epochs": 2000,
+  "batch_size": 64
+},
+  "optimizer_config": {
+  "type": "adam",
+  "params": {
+    "lr": 0.005
+  }
+},
+  "scheduler_config": {
+    "type": "reducelronplateau",
+    "params": {
+      "mode": "min",
+      "patience": 10,
+      "factor": 0.5
+    }
+  },
+  "thresholds": [0.5, 0.75, 0.9, 0.95],
+  "log_dir": "saved/logs",
+  "checkpoint_dir": "saved/checkpoints",
+  "model_name": "CircleRegression",
+  "pretrained_model": ""
+}
